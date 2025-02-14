@@ -6,7 +6,7 @@
 /*   By: ikarouat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 21:07:38 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/01/29 15:50:29 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/02/12 02:40:41 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,11 @@ int	main(int argc, char **argv)
 	a = init_stack(argc, argv);
 	b = ft_stack_new(argc);
 	b->size = 0;
-	b->sp = b->elm;
+	b->sp = &b->elm;
 	//SORTING
-	
+	if (a->size <= 5)
+		short_sort(a);
+	else
+		sort(a, b);
 	return (0);
 }

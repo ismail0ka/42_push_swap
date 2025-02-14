@@ -6,7 +6,7 @@
 /*   By: ikarouat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 21:07:49 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/01/29 13:58:13 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/02/04 16:15:51 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,6 @@ void	rra(t_stack *);
 void	rrb(t_stack *);
 void	rrr(t_stack *, t_stack *);
 
+
+void   sort(t_stack *a, t_stack *b);
 #endif //PUSH_SWAP_H
