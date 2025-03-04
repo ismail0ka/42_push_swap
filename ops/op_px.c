@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_px.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikarouat <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 21:54:26 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/01/28 22:08:35 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/03/02 06:09:30 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ void	px(t_stack *to, t_stack *from)
 {
 	if (from->size == 0)
 		return ;
-	to->elm[to->size - 1] = from->elm[from->size - 1];
+	to->bp[to->size - 1] = from->bp[from->size - 1];
 	to->size++;
 	from->size--;
-	to->sp = &to->elm[to->size - 1];
-	from->sp = &from->elm[from->size - 1];
+	to->sp = &to->bp[to->size - 1];
+	from->sp = &from->bp[from->size - 1];
 }
 
 void	pa(t_stack *a, t_stack *b)

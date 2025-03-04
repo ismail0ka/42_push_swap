@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op_rr.c                                            :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ikarouat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/29 13:27:21 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/03/02 06:09:36 by ikarouat         ###   ########.fr       */
+/*   Created: 2025/01/16 18:16:42 by ikarouat          #+#    #+#             */
+/*   Updated: 2025/01/16 18:17:26 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "ft_printf_utils.h"
 
-void	rr(t_stack *a, t_stack *b)
+int	ft_putstr(const char *s)
 {
-	rx(a);
-	rx(b);
-	ft_printf("rr\n");
+	return (write(1, s, ft_strlen(s)));
 }

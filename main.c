@@ -3,78 +3,76 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikarouat <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 21:07:38 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/02/12 02:40:41 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/03/04 05:20:41 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int is_number(char *str){
-	if (*str != '-' || *str != '+' || !ft_isdigit(*str))
-		return (0);
-	while (*str){
-		if (!ft_isdigit(*str))
-			return (0);
-		str++;
-	}
-	return (1);
-}
-
-static void	validate_args(int argc, char **argv)
+static int	count_args(char **args)
 {
 	int	i;
 
-	i = 1;
-	while (i < argc)
-	{
-		if (!is_number(argv[i]))
-		{
-			write(1, "Error\n", 6);
-			exit(-1);
-		}
+	i = 0;
+	while (args[i])
 		i++;
-	}
+	return (i);
 }
 
-static t_stack	*init_stack(int argc, char **argv){
+static t_stack	*init_stack(int count, char **args)
+{
+	t_stack	*a;
 	int		i;
-	t_stack *a;
 
+	a = ft_stack_new(count);
 	i = 0;
-	a = ft_stack_new(argc - 1);
-	if (!a)
+	while (args && *args)
 	{
-		write(1, "Error\n", 6);
-		exit(-1);
-	}
-	while (i < argc - 1){
-		a->elm[i] = ft_atoi(argv[i + 1]);
+		a->bp[i] = ft_atoi(*args);
+		args++;
 		i++;
 	}
-	a->sp = &a->elm[i - 1];
+	a->sp = &a->bp[count - 1];
 	return (a);
 }
 
-int	main(int argc, char **argv)
+int	main(int argc, const char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
+	char	**args;
 
-	if (argc < 2)
-		return (0);
 	//INIT STACKS
-	validate_args(argc, argv);
-	a = init_stack(argc, argv);
-	b = ft_stack_new(argc);
+	if (argc < 2 || has_empty_str(argv))
+		exit(write(2, "Error\n", 6));
+	args = validate_args(argc, argv);
+	if (!args)
+		exit(write(2, "Error\n", 6));
+	a = init_stack(count_args(args), args);
+	free_args(args);
+	//write(1, "Valid\n", 6);
+	b = ft_stack_new(count_args(args));
 	b->size = 0;
-	b->sp = &b->elm;
+	b->sp = b->bp;
 	//SORTING
 	if (a->size <= 5)
-		short_sort(a);
+		short_sort(a, b);
 	else
 		sort(a, b);
+	(free(a->bp), free(a));
+	(free(b->bp), free(b));
 	return (0);
 }
+
+/*void	print_stack(t_stack *a)
+{
+	int i=0;
+	while (i < a->size)
+	{
+		ft_printf("%d ", a->bp[i]);
+		i++;
+	}
+}*/

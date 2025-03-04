@@ -1,44 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op_rrx.c                                           :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/29 13:37:49 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/03/02 06:09:49 by ikarouat         ###   ########.fr       */
+/*   Created: 2024/11/22 16:05:12 by ikarouat          #+#    #+#             */
+/*   Updated: 2025/02/21 20:00:40 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
+# include "ft_printf_utils/ft_printf_utils.h"
 
-void	rrx(t_stack *stack)
-{
-	int	i;
-	int	to_top;
-
-	if (stack->size < 2)
-		return ;
-	i = 0;
-	to_top = stack->bp[0];
-	while (i < stack->size - 1)
-	{
-		stack->bp[i] = stack->bp[i + 1];
-		i++;
-	}
-	stack->bp[stack->size - 1] = to_top;
-}
-
-void	rra(t_stack *a)
-{
-	rrx(a);
-	if (a->size >= 2)
-		ft_printf("rra\n");
-}
-
-void	rrb(t_stack *b)
-{
-	rrx(b);
-	if (b->size >= 2)
-		ft_printf("rrb\n");
-}
+int	ft_printf(const char *s, ...);
+#endif

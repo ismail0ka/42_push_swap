@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op_rr.c                                            :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ikarouat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/29 13:27:21 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/03/02 06:09:36 by ikarouat         ###   ########.fr       */
+/*   Created: 2024/10/22 21:06:09 by ikarouat          #+#    #+#             */
+/*   Updated: 2024/11/10 16:17:04 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-void	rr(t_stack *a, t_stack *b)
+int	ft_toupper(int c)
 {
-	rx(a);
-	rx(b);
-	ft_printf("rr\n");
+	if (c >= 0141 && c <= 0172)
+		c -= 32;
+	return (c);
 }

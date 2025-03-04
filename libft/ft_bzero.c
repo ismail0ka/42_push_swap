@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op_rr.c                                            :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ikarouat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/29 13:27:21 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/03/02 06:09:36 by ikarouat         ###   ########.fr       */
+/*   Created: 2024/10/23 21:04:37 by ikarouat          #+#    #+#             */
+/*   Updated: 2024/10/23 21:15:39 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	rr(t_stack *a, t_stack *b)
+void	ft_bzero(void *s, size_t n)
 {
-	rx(a);
-	rx(b);
-	ft_printf("rr\n");
+	ft_memset(s, '\0', n);
 }

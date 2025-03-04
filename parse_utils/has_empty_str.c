@@ -1,44 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op_rrx.c                                           :+:      :+:    :+:   */
+/*   has_empty_str.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/29 13:37:49 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/03/02 06:09:49 by ikarouat         ###   ########.fr       */
+/*   Created: 2025/03/04 00:35:19 by ikarouat          #+#    #+#             */
+/*   Updated: 2025/03/04 05:12:16 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rrx(t_stack *stack)
+static int	is_space(const char c)
+{
+	return ((c >= 9 && c <= 13) || c == ' ');
+}
+
+static int	is_empty(const char *s)
+{
+	while (is_space(*s))
+		s++;
+	if (*s == 0)
+		return (1);
+	return (0);
+}
+
+int	has_empty_str(const char **args)
 {
 	int	i;
-	int	to_top;
 
-	if (stack->size < 2)
-		return ;
-	i = 0;
-	to_top = stack->bp[0];
-	while (i < stack->size - 1)
+	i = -1;
+	while (args && args[++i])
 	{
-		stack->bp[i] = stack->bp[i + 1];
-		i++;
+		if (is_empty(args[i]))
+			return (1);
 	}
-	stack->bp[stack->size - 1] = to_top;
-}
-
-void	rra(t_stack *a)
-{
-	rrx(a);
-	if (a->size >= 2)
-		ft_printf("rra\n");
-}
-
-void	rrb(t_stack *b)
-{
-	rrx(b);
-	if (b->size >= 2)
-		ft_printf("rrb\n");
+	return (0);
 }

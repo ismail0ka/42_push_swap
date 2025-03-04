@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op_rr.c                                            :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ikarouat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/29 13:27:21 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/03/02 06:09:36 by ikarouat         ###   ########.fr       */
+/*   Created: 2024/10/28 21:37:07 by ikarouat          #+#    #+#             */
+/*   Updated: 2024/11/12 21:03:39 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
+#include <unistd.h>
 
-void	rr(t_stack *a, t_stack *b)
+void	ft_putendl_fd(char *s, int fd)
 {
-	rx(a);
-	rx(b);
-	ft_printf("rr\n");
+	unsigned char	new_line;
+
+	if (fd < 0 || !s)
+		return ;
+	new_line = '\n';
+	ft_putstr_fd(s, fd);
+	write(fd, &new_line, 1);
 }

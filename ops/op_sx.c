@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_sx.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikarouat <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 21:51:35 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/01/28 22:00:31 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/03/02 06:10:02 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	sx(t_stack *stack)
 
 	if (stack->size < 2)
 		return ;
-	tmp = stack->elm[stack->size - 1];
-	stack->elm[stack->size - 1] = stack->elm[stack->size - 2];
-	stack->elm[stack->size - 2] = tmp;
+	tmp = stack->bp[stack->size - 1];
+	stack->bp[stack->size - 1] = stack->bp[stack->size - 2];
+	stack->bp[stack->size - 2] = tmp;
 }
 
 void	sa(t_stack *stack)

@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op_rr.c                                            :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ikarouat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/29 13:27:21 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/03/02 06:09:36 by ikarouat         ###   ########.fr       */
+/*   Created: 2024/10/22 20:52:24 by ikarouat          #+#    #+#             */
+/*   Updated: 2024/11/13 23:20:37 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	rr(t_stack *a, t_stack *b)
+int	ft_isalnum(int c)
 {
-	rx(a);
-	rx(b);
-	ft_printf("rr\n");
+	return (ft_isalpha(c) || ft_isdigit(c));
 }

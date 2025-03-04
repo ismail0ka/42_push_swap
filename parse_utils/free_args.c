@@ -1,44 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op_rrx.c                                           :+:      :+:    :+:   */
+/*   free_args.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/29 13:37:49 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/03/02 06:09:49 by ikarouat         ###   ########.fr       */
+/*   Created: 2025/03/03 21:07:56 by ikarouat          #+#    #+#             */
+/*   Updated: 2025/03/03 21:08:09 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rrx(t_stack *stack)
+void	free_args(char **args)
 {
 	int	i;
-	int	to_top;
 
-	if (stack->size < 2)
-		return ;
 	i = 0;
-	to_top = stack->bp[0];
-	while (i < stack->size - 1)
-	{
-		stack->bp[i] = stack->bp[i + 1];
-		i++;
-	}
-	stack->bp[stack->size - 1] = to_top;
-}
-
-void	rra(t_stack *a)
-{
-	rrx(a);
-	if (a->size >= 2)
-		ft_printf("rra\n");
-}
-
-void	rrb(t_stack *b)
-{
-	rrx(b);
-	if (b->size >= 2)
-		ft_printf("rrb\n");
+	while (args[i])
+		free(args[i++]);
+	free(args);
 }

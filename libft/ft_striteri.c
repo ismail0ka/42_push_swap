@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op_rr.c                                            :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ikarouat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/29 13:27:21 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/03/02 06:09:36 by ikarouat         ###   ########.fr       */
+/*   Created: 2024/10/28 21:21:54 by ikarouat          #+#    #+#             */
+/*   Updated: 2024/11/12 21:09:17 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-void	rr(t_stack *a, t_stack *b)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	rx(a);
-	rx(b);
-	ft_printf("rr\n");
+	unsigned int	i;
+
+	if (!s || !f)
+		return ;
+	i = 0;
+	while (*(s + i) != '\0')
+	{
+		(*f)(i, s + i);
+		i++;
+	}
 }
