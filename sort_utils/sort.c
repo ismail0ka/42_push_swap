@@ -6,7 +6,7 @@
 /*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 16:16:08 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/03/07 07:06:26 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/03/07 11:44:19 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	choose_pivot(t_stack *a)
 		tab[i] = a->bp[i];
 		i++;
 	}
-	quick_sort(tab, 0, a->size);
+	quick_sort(tab, 0, a->size - 1);
 	pivot = tab[a->size / 2];
 	return (free(tab), pivot);
 }
@@ -42,14 +42,13 @@ static void	push_to_b(t_stack *a, t_stack *b, int pivot)
 	while (i--)
 	{
 		if (*(a->sp) <= pivot)
+		{
 			pb(a, b);
+			if (*b->sp < b->bp[b->size - 2])
+				sx(b);
+		}
 		else
 			rx(a);
-		//if (a->bp[0] <= pivot)
-		//	(rra(a), pb(a, b));
-		//if (a->bp[a->size - 2] <= pivot)
-		//	(sa(a), pb(a, b));
-		
 	}
 }
 
@@ -61,7 +60,7 @@ static void	push_back_to_a(t_stack *a, t_stack *b)
 	while(i--)
 	{
 		if (*(b->sp) > b->bp[b->size - 1])
-			sb(b);
+			sx(b);
 		pa(a, b);
 	}
 }
@@ -85,7 +84,7 @@ void	sort(t_stack *a, t_stack *b)
 {
 	int	pivot;
 
-	if (is_sorted(a, b) || a->size == 1)
+	if (a->size <= 1 || is_sorted(a, b))
 		return ;
 	(ft_printf("A:"), print_stack(a));
 	(ft_printf("B:"), print_stack(b));

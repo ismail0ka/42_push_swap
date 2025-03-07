@@ -15,6 +15,7 @@ SRCS= parse_utils/has_empty_str.c \
 	ops/op_rr.c \
 	ops/op_rrx.c \
 	ops/op_rrr.c \
+	sort_utils/move_to_top.c \
 	sort_utils/get_max.c \
 	sort_utils/get_min.c \
 	sort_utils/quick_sort.c \
@@ -43,6 +44,6 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 
-re: clean all
+re: fclean all
 
 .PHONY: all clean fclean re
