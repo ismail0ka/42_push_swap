@@ -6,7 +6,7 @@
 /*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 21:07:49 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/03/04 00:35:14 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/03/07 06:47:34 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@
 
 typedef struct s_stack
 {
-	int	*bp;
-	int	*sp;
-	int	size;
+	int		*bp;
+	int		*sp;
+	int		size;
+	char	name;
 }	t_stack;
 
 int		has_empty_str(const char **args);

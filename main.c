@@ -6,7 +6,7 @@
 /*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 21:07:38 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/03/07 01:33:55 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/03/07 06:48:00 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ static t_stack	*init_stack(int count, char **args)
 		i++;
 	}
 	a->sp = &a->bp[count - 1];
+	a->name = 'a';
 	return (a);
 }
 void print_stack(t_stack *x);
@@ -58,6 +59,7 @@ int	main(int argc, const char **argv)
 	b = ft_stack_new(count_args(args));
 	b->size = 0;
 	b->sp = b->bp;
+	b->name = 'b';
 	//SORTING
 	ft_printf("Pre sort: ");
 	print_stack(a);
