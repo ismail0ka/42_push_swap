@@ -6,7 +6,7 @@
 /*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 21:07:38 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/03/04 05:20:41 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/03/07 01:33:55 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ static t_stack	*init_stack(int count, char **args)
 	a->sp = &a->bp[count - 1];
 	return (a);
 }
+void print_stack(t_stack *x);
 
 int	main(int argc, const char **argv)
 {
@@ -58,16 +59,22 @@ int	main(int argc, const char **argv)
 	b->size = 0;
 	b->sp = b->bp;
 	//SORTING
+	ft_printf("Pre sort: ");
+	print_stack(a);
+	print_stack(b);
 	if (a->size <= 5)
 		short_sort(a, b);
 	else
 		sort(a, b);
+	ft_printf("Post sort: ");
+	print_stack(a);
+	print_stack(b);
 	(free(a->bp), free(a));
 	(free(b->bp), free(b));
 	return (0);
 }
 
-/*void	print_stack(t_stack *a)
+void	print_stack(t_stack *a)
 {
 	int i=0;
 	while (i < a->size)
@@ -75,4 +82,5 @@ int	main(int argc, const char **argv)
 		ft_printf("%d ", a->bp[i]);
 		i++;
 	}
-}*/
+	write(1, "\n", 1);
+}

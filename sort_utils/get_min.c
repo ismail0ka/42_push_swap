@@ -6,7 +6,7 @@
 /*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 20:02:44 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/03/04 05:23:33 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/03/06 02:10:49 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int get_min(t_stack *a)
 	int	min_index;
 
 	i = 0;
-	min_index = -1;
+	min_index = i;
 	while (i < a->size)
 	{
 		if (a->bp[i] < a->bp[min_index])

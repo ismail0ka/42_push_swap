@@ -6,7 +6,7 @@
 /*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 21:54:26 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/03/02 06:09:30 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/03/05 15:08:35 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	px(t_stack *to, t_stack *from)
 {
 	if (from->size == 0)
 		return ;
-	to->bp[to->size - 1] = from->bp[from->size - 1];
 	to->size++;
+	to->bp[to->size - 1] = from->bp[from->size - 1];
 	from->size--;
 	to->sp = &to->bp[to->size - 1];
 	from->sp = &from->bp[from->size - 1];
