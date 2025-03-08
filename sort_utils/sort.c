@@ -6,7 +6,7 @@
 /*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 16:16:08 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/03/07 11:44:19 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/03/08 05:57:16 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,10 @@ static void	push_to_b(t_stack *a, t_stack *b, int pivot)
 {
 	int	i;
 
-	i = a->size;
-	while (i--)
-	{
-		if (*(a->sp) <= pivot)
-		{
-			pb(a, b);
-			if (*b->sp < b->bp[b->size - 2])
-				sx(b);
-		}
-		else
-			rx(a);
-	}
+	//repeat while a num <= pivot exists in a 
+		//look for min number
+		//find cheapest way to get it to top of stack a
+		//pb
 }
 
 static void	push_back_to_a(t_stack *a, t_stack *b)
