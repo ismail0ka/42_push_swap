@@ -6,7 +6,7 @@
 /*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 16:16:08 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/03/08 05:57:16 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/03/09 07:01:24 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,23 @@ static int	choose_pivot(t_stack *a)
 	return (free(tab), pivot);
 }
 
-static void	push_to_b(t_stack *a, t_stack *b, int pivot)
+static int	has_sub_pivot(t_stack *a, int pivot)
 {
 	int	i;
 
-	//repeat while a num <= pivot exists in a 
-		//look for min number
-		//find cheapest way to get it to top of stack a
-		//pb
+	i = 0;
+	while (i++ < a->size)
+	{
+		if (a->bp[i] <= pivot)
+			return  (1);
+	}
+	return (0);
+}
+
+static void	push_to_b(t_stack *a, t_stack *b, int pivot)
+{
+	while (has_sub_pivot(a, pivot))
+		(move_to_top(a, a->bp[get_min(a)]), pb(a, b));
 }
 
 static void	push_back_to_a(t_stack *a, t_stack *b)
