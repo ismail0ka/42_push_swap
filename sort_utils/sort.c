@@ -6,7 +6,7 @@
 /*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 16:16:08 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/03/09 07:01:24 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/03/09 08:25:12 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,10 +87,7 @@ void	sort(t_stack *a, t_stack *b)
 
 	if (a->size <= 1 || is_sorted(a, b))
 		return ;
-	(ft_printf("A:"), print_stack(a));
-	(ft_printf("B:"), print_stack(b));
 	pivot = choose_pivot(a);
-	ft_printf("Pivot: %d\n", pivot);
 	push_to_b(a, b, pivot);
 	sort(a, b);
 	push_back_to_a(a, b);
