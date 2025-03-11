@@ -6,7 +6,7 @@
 /*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 21:07:49 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/03/07 08:19:04 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/03/11 06:34:12 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,28 @@
 # include "../ft_printf/ft_printf.h"
 # include "../libft/libft.h"
 
-typedef struct s_stack
+typedef struct	s_stack
 {
 	int		*bp;
 	int		*sp;
 	int		size;
 	char	name;
 }	t_stack;
+
+typedef enum	e_range_id
+{
+	B_B,
+	T_B,
+	T_A,
+	B_A
+}	t_range_id;
+
+typedef struct	s_range
+{
+	int			begin;
+	int			end;
+	t_range_id	id;
+}	t_range;
 
 int		has_empty_str(const char **args);
 char	**validate_args(int argc, const char **argv);
