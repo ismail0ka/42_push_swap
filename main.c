@@ -6,7 +6,7 @@
 /*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 21:07:38 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/03/10 08:05:51 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/03/13 05:37:51 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ int	main(int argc, const char **argv)
 		short_sort(a, b);
 	else
 		sort(a, b);
-	//ft_printf("Post sort: ");
-	//print_stack(a);
+	ft_printf("Post sort: ");
+	print_stack(a);
 	(free(a->bp), free(a));
 	(free(b->bp), free(b));
 	return (0);
