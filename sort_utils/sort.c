@@ -6,7 +6,7 @@
 /*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 16:16:08 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/03/14 07:48:44 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/03/15 06:40:21 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,25 @@ static int	*init_range(t_stack *a, t_range *range)
 	n = a->size - 1;
 	quick_sort(tab, 0, n);
 	range->mid = n / 2;
-	range->offset = (a->size) / chunk_size;
-	range->begin = (n / 2) - range->offset;
-	range->end = (n / 2) + range->offset;
+	range->offset = chunk_size / 2;
+	if (range->offset == 0)
+		range->offset = 1;
+	range->begin = range->mid - range->offset;
+	range->end = range->mid + range->offset;
 	return (tab);
 }
 
-static int	has_num_in_range(t_stack *a, t_range *range, int *index)
+static int	has_num_in_range(t_stack *a, int *tab, t_range *range, int *index)
 {
 	int	n;
 
 	n = a->size - 1;
+	while (n-- > 0)
+	{
+		if (a->bp[n] >= tab[range->begin] && a->bp[n] <= tab[range->end])
+			return (*index = n, 1);
+	}
+	return (0);
 }
 
 static void	push_to_b(t_stack *a, t_stack *b, int *tab, t_range *range)
@@ -57,7 +65,7 @@ static void	push_to_b(t_stack *a, t_stack *b, int *tab, t_range *range)
 	in_range_index = 0;
 	while (range->begin != 0 && range->end != n)
 	{
-		while (has_num_in_range(a, range, &in_range_index))
+		while (has_num_in_range(a, tab, range, &in_range_index))
 		{
 			move_to_top(a, a->bp[in_range_index]);
 			if (*a->sp >= tab[range->mid])
@@ -72,7 +80,8 @@ static void	push_to_b(t_stack *a, t_stack *b, int *tab, t_range *range)
 		if (range->end > n)
 			range->end = n;
 	}
-	print_stack(b);
+	while (a->size)
+		pb(a, b);
 }
 
 static void	push_back_to_a(t_stack *a, t_stack *b)
