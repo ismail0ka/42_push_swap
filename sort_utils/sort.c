@@ -6,7 +6,7 @@
 /*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 16:16:08 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/03/15 06:40:21 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/03/16 07:33:52 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ static int	*init_range(t_stack *a, t_range *range)
 
 	chunk_size = 1;
 	if (a->size <= 100)
-		chunk_size = a->size / 10;
+		chunk_size = a->size / 5;
 	else
-		chunk_size = a->size / 21;
+		chunk_size = a->size / 7;
 	tab = malloc(a->size * sizeof(int));
 	if (!tab)
 		(write(2, "Error\n", 6), exit(1));
@@ -45,15 +45,34 @@ static int	*init_range(t_stack *a, t_range *range)
 
 static int	has_num_in_range(t_stack *a, int *tab, t_range *range, int *index)
 {
-	int	n;
-
-	n = a->size - 1;
-	while (n-- > 0)
-	{
-		if (a->bp[n] >= tab[range->begin] && a->bp[n] <= tab[range->end])
-			return (*index = n, 1);
-	}
-	return (0);
+	int n;
+    int min_moves = a->size;
+    int moves;
+    int chosen_index = -1;
+    
+    for (n = 0; n < a->size; n++)
+    {
+        if (a->bp[n] >= tab[range->begin] && a->bp[n] <= tab[range->end])
+        {
+            if (n <= a->size / 2)
+                moves = n;
+            else
+                moves = a->size - n;
+            if (moves < min_moves)
+            {
+                min_moves = moves;
+                chosen_index = n;
+            }
+        }
+    }
+    
+    if (chosen_index != -1)
+    {
+        *index = chosen_index;
+        return 1;
+    }
+    
+    return (0);
 }
 
 static void	push_to_b(t_stack *a, t_stack *b, int *tab, t_range *range)
