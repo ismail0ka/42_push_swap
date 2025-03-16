@@ -6,7 +6,7 @@
 /*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 23:42:11 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/02/26 00:33:22 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/03/16 21:41:44 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	partition(int *tab, int low, int high)
 {
 	int	pivot;
 	int	i;
-	int j;
+	int	j;
 
 	pivot = tab[high];
 	i = low - 1;
@@ -35,18 +35,18 @@ static int	partition(int *tab, int low, int high)
 		if (tab[j] <= pivot)
 			swap(&tab[++i], &tab[j]);
 	}
-	swap(&tab[i+1], &tab[high]);
-	return (i+1);
+	swap(&tab[i + 1], &tab[high]);
+	return (i + 1);
 }
-
 
 void	quick_sort(int *tab, int low, int high)
 {
+	int	pivot;
+
 	if (low < high)
 	{
-		int pivot = partition(tab, low, high);
-
+		pivot = partition(tab, low, high);
 		quick_sort(tab, low, pivot - 1);
 		quick_sort(tab, pivot + 1, high);
-	}	
+	}
 }

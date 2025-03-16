@@ -6,13 +6,11 @@
 /*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 16:16:08 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/03/16 07:33:52 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/03/16 21:57:27 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	print_stack(t_stack *a);
 
 static int	*init_range(t_stack *a, t_range *range)
 {
@@ -45,34 +43,32 @@ static int	*init_range(t_stack *a, t_range *range)
 
 static int	has_num_in_range(t_stack *a, int *tab, t_range *range, int *index)
 {
-	int n;
-    int min_moves = a->size;
-    int moves;
-    int chosen_index = -1;
-    
-    for (n = 0; n < a->size; n++)
-    {
-        if (a->bp[n] >= tab[range->begin] && a->bp[n] <= tab[range->end])
-        {
-            if (n <= a->size / 2)
-                moves = n;
-            else
-                moves = a->size - n;
-            if (moves < min_moves)
-            {
-                min_moves = moves;
-                chosen_index = n;
-            }
-        }
-    }
-    
-    if (chosen_index != -1)
-    {
-        *index = chosen_index;
-        return 1;
-    }
-    
-    return (0);
+	int	i;
+	int	min_moves;
+	int	moves;
+	int	chosen_index;
+
+	min_moves = a->size;
+	chosen_index = -1;
+	i = -1;
+	while (++i < a->size)
+	{
+		if (a->bp[i] >= tab[range->begin] && a->bp[i] <= tab[range->end])
+		{
+			if (i <= a->size / 2)
+				moves = i;
+			else
+				moves = a->size - i;
+			if (moves < min_moves)
+			{
+				min_moves = moves;
+				chosen_index = i;
+			}
+		}
+	}
+	if (chosen_index != -1)
+		return (*index = chosen_index, 1);
+	return (0);
 }
 
 static void	push_to_b(t_stack *a, t_stack *b, int *tab, t_range *range)
@@ -105,7 +101,7 @@ static void	push_to_b(t_stack *a, t_stack *b, int *tab, t_range *range)
 
 static void	push_back_to_a(t_stack *a, t_stack *b)
 {
-	while(b->size)
+	while (b->size)
 		(move_to_top(b, b->bp[get_max(b)]), pa(a, b));
 }
 

@@ -6,7 +6,7 @@
 /*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 06:30:52 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/03/03 21:45:24 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/03/16 21:41:11 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ static int	is_number(char *s)
 {
 	if (*s == '+' || *s == '-')
 		s++;
+	if (*s == 0)
+		return (0);
 	while (*s)
 	{
 		if (!ft_isdigit(*s))
@@ -53,8 +55,8 @@ char	**validate_args(int argc, const char **argv)
 	int		i;
 
 	i = -1;
-	args = NULL;
 	str = NULL;
+	args = NULL;
 	while (--argc > 0)
 	{
 		str = ft_strjoin(str, argv[argc]);
@@ -62,7 +64,10 @@ char	**validate_args(int argc, const char **argv)
 			exit(write(2, "Error\n", 6));
 		str = ft_strjoin(str, " ");
 		if (!str)
-			exit(write(2, "Error\n", 6));
+		{
+			write(2, "Error\n", 6);
+			exit(1);
+		}
 	}
 	args = ft_split(str, ' ');
 	free(str);

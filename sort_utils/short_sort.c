@@ -6,7 +6,7 @@
 /*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 23:19:00 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/03/09 08:25:04 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/03/16 21:44:56 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,29 @@ static void	sort_two(t_stack *a)
 
 static void	sort_three(t_stack *a)
 {
-	int x0 = *(a->sp);
-    int x1 = a->bp[1];
-    int x2 = a->bp[0];
+	int	x0;
+	int	x1;
+	int	x2;
 
-    if (x0 > x1 && x1 < x2 && x2 > x0)
-        sx(a);
-    else if (x0 > x1 && x1 > x2)
-        (sx(a), rrx(a));
-    else if (x0 > x1 && x1 < x2 && x2 < x0)
-        rx(a);
-    else if (x0 < x1 && x1 > x2 && x2 > x0)
-    	(sx(a), rx(a));
-    else if (x0 < x1 && x1 > x2 && x2 < x0)
-        rrx(a);
+	x0 = *(a->sp);
+	x1 = a->bp[1];
+	x2 = a->bp[0];
+	if (x0 > x1 && x1 < x2 && x2 > x0)
+		sx(a);
+	else if (x0 > x1 && x1 > x2)
+	{
+		sx(a);
+		rrx(a);
+	}
+	else if (x0 > x1 && x1 < x2 && x2 < x0)
+		rx(a);
+	else if (x0 < x1 && x1 > x2 && x2 > x0)
+	{
+		sx(a);
+		rx(a);
+	}
+	else if (x0 < x1 && x1 > x2 && x2 < x0)
+		rrx(a);
 }
 
 static void	sort_four(t_stack *a, t_stack *b)

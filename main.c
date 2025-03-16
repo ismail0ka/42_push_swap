@@ -6,7 +6,7 @@
 /*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 21:07:38 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/03/16 06:22:10 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/03/16 21:30:19 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,13 @@ static t_stack	*init_stack(int count, char **args)
 	while (j >= 0)
 	{
 		a->bp[i] = ft_atoi(args[j]);
-		(i++, j--);
+		i++;
+		j--;
 	}
 	a->sp = &a->bp[count - 1];
 	a->name = 'a';
 	return (a);
 }
-void print_stack(t_stack *x);
 
 int	main(int argc, const char **argv)
 {
@@ -48,7 +48,6 @@ int	main(int argc, const char **argv)
 	t_stack	*b;
 	char	**args;
 
-	//INIT STACKS
 	if (argc < 2 || has_empty_str(argv))
 		exit(write(2, "Error\n", 6));
 	args = validate_args(argc, argv);
@@ -56,21 +55,14 @@ int	main(int argc, const char **argv)
 		exit(write(2, "Error\n", 6));
 	a = init_stack(count_args(args), args);
 	free_args(args);
-	//write(1, "Valid\n", 6);
 	b = ft_stack_new(count_args(args));
 	b->size = 0;
 	b->sp = b->bp;
 	b->name = 'b';
-	//SORTING
-	//ft_printf("Pre sort: ");
-	//print_stack(a);
-	//print_stack(b);
 	if (a->size <= 5)
 		short_sort(a, b);
 	else
 		sort(a, b);
-	//ft_printf("Post sort: ");
-	//print_stack(a);
 	(free(a->bp), free(a));
 	(free(b->bp), free(b));
 	return (0);
@@ -78,7 +70,9 @@ int	main(int argc, const char **argv)
 
 void	print_stack(t_stack *a)
 {
-	int i=0;
+	int	i;
+
+	i = 0;
 	while (i < a->size)
 	{
 		ft_printf("%d ", a->bp[i]);
