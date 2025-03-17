@@ -6,7 +6,7 @@
 /*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 06:42:41 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/03/16 21:19:28 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/03/17 05:24:07 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	move_to_top(t_stack *s, int x)
 	int	i;
 
 	i = 0;
+	if (s->size == 0 || *s->sp == x)
+		return ;
 	if (s->size >= 2 && s->bp[s->size - 2] == x)
 		return (sx(s));
 	if (s->bp[i] == x)
