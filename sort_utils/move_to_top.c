@@ -6,7 +6,7 @@
 /*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 06:42:41 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/03/17 05:24:07 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/03/18 08:00:35 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	move_to_top(t_stack *s, int x)
 		if (s->bp[i] == x)
 			break ;
 	}
-	if (i <= s->size / 2)
+	if (i < s->size / 2)
 	{
 		while (*s->sp != x)
 			rrx(s);

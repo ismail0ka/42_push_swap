@@ -6,12 +6,13 @@
 /*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 16:16:08 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/03/17 11:07:31 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/03/18 08:04:22 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+void print_stack(t_stack *);
 static int	*init_range(t_stack *a, t_range *range)
 {
 	int	i;
@@ -21,9 +22,9 @@ static int	*init_range(t_stack *a, t_range *range)
 
 	chunk_size = 1;
 	if (a->size <= 100)
-		chunk_size = a->size / 10;
+		chunk_size = a->size / 8;
 	else
-		chunk_size = a->size / 14;
+		chunk_size = a->size / 18;
 	tab = malloc(a->size * sizeof(int));
 	if (!tab)
 		(write(2, "Error\n", 6), exit(1));
@@ -32,8 +33,10 @@ static int	*init_range(t_stack *a, t_range *range)
 		tab[i] = a->bp[i];
 	n = a->size - 1;
 	quick_sort(tab, 0, n);
-	range->mid = (n / 2) - 1;
+	range->mid = (n / 2);
 	range->offset = chunk_size;
+	if (range->offset == 0)
+		range->offset = 1;
 	range->begin = range->mid - range->offset;
 	range->end = range->mid + range->offset;
 	return (tab);
@@ -95,10 +98,44 @@ static void	push_to_b(t_stack *a, t_stack *b, int *tab, t_range *range)
 	}
 }
 
-static void	push_back_to_a(t_stack *a, t_stack *b)//, int *tab, t_range *range)
+int	max_is_on_b(t_stack *b, int x)
 {
+	int	i;
+
+	i = 0;
+	while (i < b->size)
+	{
+		if (b->bp[i] == x)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+static void	push_back_to_a(t_stack *a, t_stack *b, int *tab)
+{
+	int	not_sorted;
+	int	i;
+
+	i = b->size - 1;
+	not_sorted = 0;
 	while (b->size)
-		(move_to_top(b, b->bp[get_max(b)]), pa(a, b));
+	{
+		not_sorted = !is_sorted(a);
+		if (!max_is_on_b(b, tab[i]))
+			(rrx(a), i--);
+		else if (*b->sp == tab[i])
+			(pa(a, b), i--);
+		else if (a->size && (not_sorted == 0 || *b->sp > a->bp[0]))
+		{
+			pa(a, b);
+			rx(a);
+		}
+		else
+			move_to_top(b, b->bp[get_max(b)]);
+	}
+	while (!is_sorted(a))
+		rrx(a);
 }
 
 void	sort(t_stack *a, t_stack *b)
@@ -109,7 +146,7 @@ void	sort(t_stack *a, t_stack *b)
 	range = malloc(sizeof(t_range));
 	tab = init_range(a, range);
 	push_to_b(a, b, tab, range);
-	push_back_to_a(a, b);//, tab, range);
+	push_back_to_a(a, b, tab);
 	(free(tab), free(range));
 }
 //->[x0, x1, x2, x9 , x4, x7, x6, x5, x3, x8]a
