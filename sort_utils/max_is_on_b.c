@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_sorted.c                                        :+:      :+:    :+:   */
+/*   max_is_on_b.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/18 05:23:27 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/03/18 10:11:14 by ikarouat         ###   ########.fr       */
+/*   Created: 2025/03/18 16:46:35 by ikarouat          #+#    #+#             */
+/*   Updated: 2025/03/18 16:48:46 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	is_sorted(t_stack *s)
+int	max_is_on_b(t_stack *b, int x)
 {
 	int	i;
 
 	i = 0;
-	while (i < s->size - 1)
+	while (i < b->size)
 	{
-		if (s->bp[i] < s->bp[i + 1])
-			return (0);
+		if (b->bp[i] == x)
+			return (1);
 		i++;
 	}
-	return (1);
+	return (0);
 }

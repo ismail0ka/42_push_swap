@@ -6,7 +6,7 @@
 /*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 21:07:38 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/03/17 10:41:11 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/03/18 10:09:27 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static t_stack	*init_stack(int count, char **args)
 	a->name = 'a';
 	return (a);
 }
-void	print_stack(t_stack *a);
+
 int	main(int argc, const char **argv)
 {
 	t_stack	*a;
@@ -63,14 +63,12 @@ int	main(int argc, const char **argv)
 		short_sort(a, b);
 	else
 		sort(a, b);
-	//ft_printf("A: ");
-	//print_stack(a);
 	(free(a->bp), free(a));
 	(free(b->bp), free(b));
 	return (0);
 }
 
-void	print_stack(t_stack *a)
+/*void	print_stack(t_stack *a)
 {
 	int	i;
 
@@ -81,4 +79,4 @@ void	print_stack(t_stack *a)
 		i++;
 	}
 	write(1, "\n", 1);
-}
+}*/

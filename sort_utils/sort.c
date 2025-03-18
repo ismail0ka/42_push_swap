@@ -6,13 +6,12 @@
 /*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 16:16:08 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/03/18 08:04:22 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/03/18 16:45:33 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void print_stack(t_stack *);
 static int	*init_range(t_stack *a, t_range *range)
 {
 	int	i;
@@ -67,9 +66,7 @@ static int	has_num_in_range(t_stack *a, int *tab, t_range *range, int *index)
 			}
 		}
 	}
-	if (chosen_index != -1)
-		return (*index = chosen_index, 1);
-	return (0);
+	return (*index = chosen_index, chosen_index != -1);
 }
 
 static void	push_to_b(t_stack *a, t_stack *b, int *tab, t_range *range)
@@ -96,20 +93,6 @@ static void	push_to_b(t_stack *a, t_stack *b, int *tab, t_range *range)
 		if (range->end > n)
 			range->end = n;
 	}
-}
-
-int	max_is_on_b(t_stack *b, int x)
-{
-	int	i;
-
-	i = 0;
-	while (i < b->size)
-	{
-		if (b->bp[i] == x)
-			return (1);
-		i++;
-	}
-	return (0);
 }
 
 static void	push_back_to_a(t_stack *a, t_stack *b, int *tab)

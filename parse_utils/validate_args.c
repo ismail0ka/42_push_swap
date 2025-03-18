@@ -6,7 +6,7 @@
 /*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 06:30:52 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/03/16 21:41:11 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/03/18 17:05:01 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,32 @@ static int	has_duplicates(char **args)
 	return (0);
 }
 
+static int	exceeds_int_size(char **args)
+{
+	//TODO
+}
+
+static void	check_args(char **args)
+{
+	int	i;
+
+	i = -1;
+	while (args[++i])
+	{
+		if (!is_number(args[i]))
+			(free_args(args), args = NULL, exit(write(2, "Error\n", 6)));
+	}
+	if (has_duplicates(args))
+		(free_args(args), args = NULL, exit(write(2, "Error\n", 6)));
+	if (exceeds_int_size(args))
+		(free_args(args), args = NULL, exit(write(2, "Error\n", 6)));
+}
+
 char	**validate_args(int argc, const char **argv)
 {
 	char	**args;
 	char	*str;
-	int		i;
 
-	i = -1;
 	str = NULL;
 	args = NULL;
 	while (--argc > 0)
@@ -73,12 +92,6 @@ char	**validate_args(int argc, const char **argv)
 	free(str);
 	if (!args)
 		exit(write(2, "Error\n", 6));
-	while (args[++i])
-	{
-		if (!is_number(args[i]))
-			(free_args(args), args = NULL, exit(write(2, "Error\n", 6)));
-	}
-	if (has_duplicates(args))
-		(free_args(args), args = NULL, exit(write(2, "Error\n", 6)));
+	check_args(args);
 	return (args);
 }

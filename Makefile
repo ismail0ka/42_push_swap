@@ -22,6 +22,7 @@ SRCS= parse_utils/has_empty_str.c \
 	sort_utils/short_sort.c \
 	sort_utils/sort.c \
 	sort_utils/is_sorted.c \
+	sort_utils/max_is_on_b.c \
 	ft_stack_new.c \
 	main.c
 

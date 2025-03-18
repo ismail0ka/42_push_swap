@@ -6,7 +6,7 @@
 /*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 21:07:49 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/03/18 07:39:39 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/03/18 16:47:44 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	rrr(t_stack *a, t_stack *b);
 int		get_min(t_stack *a);
 int		get_max(t_stack *a);
 void	move_to_top(t_stack *stack, int x);
+int		max_is_on_b(t_stack *b, int x);
 int		is_sorted(t_stack *s);
 void	short_sort(t_stack *a, t_stack *b);
 void	quick_sort(int *a, int low, int high);
