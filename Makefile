@@ -1,5 +1,5 @@
 CC= cc
-CFLAGS= -Wall -Wextra -Werror -g3 -Iheaders
+CFLAGS= -Wall -Wextra -Werror -Iheaders -g3
 NAME= push_swap
 
 ARCHIVES = libft/libft.a \
@@ -8,6 +8,7 @@ ARCHIVES = libft/libft.a \
 SRCS= parse_utils/has_empty_str.c \
 	parse_utils/validate_args.c \
 	parse_utils/free_args.c \
+	parse_utils/ft_atol.c \
 	ops/op_px.c \
 	ops/op_sx.c \
 	ops/op_ss.c \
@@ -15,11 +16,14 @@ SRCS= parse_utils/has_empty_str.c \
 	ops/op_rr.c \
 	ops/op_rrx.c \
 	ops/op_rrr.c \
+	sort_utils/move_to_top.c \
 	sort_utils/get_max.c \
 	sort_utils/get_min.c \
 	sort_utils/quick_sort.c \
 	sort_utils/short_sort.c \
 	sort_utils/sort.c \
+	sort_utils/is_sorted.c \
+	sort_utils/max_is_on_b.c \
 	ft_stack_new.c \
 	main.c
 
@@ -39,10 +43,14 @@ $(ARCHIVES):
 
 clean:
 	rm -rf $(OBJS)
+	$(MAKE) -C libft/ clean
+	$(MAKE) -C ft_printf/ clean
 
 fclean: clean
 	rm -f $(NAME)
+	$(MAKE) -C libft/ fclean
+	$(MAKE) -C libft/ fclean
 
-re: clean all
+re: fclean all
 
 .PHONY: all clean fclean re

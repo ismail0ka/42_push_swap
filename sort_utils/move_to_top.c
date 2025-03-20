@@ -1,40 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op_sx.c                                            :+:      :+:    :+:   */
+/*   move_to_top.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/28 21:51:35 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/03/07 11:16:36 by ikarouat         ###   ########.fr       */
+/*   Created: 2025/03/07 06:42:41 by ikarouat          #+#    #+#             */
+/*   Updated: 2025/03/18 08:00:35 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sx(t_stack *stack)
+void	move_to_top(t_stack *s, int x)
 {
-	int	tmp;
+	int	i;
 
-	if (stack->size < 2)
+	i = 0;
+	if (s->size == 0 || *s->sp == x)
 		return ;
-	tmp = stack->bp[stack->size - 1];
-	stack->bp[stack->size - 1] = stack->bp[stack->size - 2];
-	stack->bp[stack->size - 2] = tmp;
-	if (stack->name == 'a')
-		ft_printf("sa\n");
+	if (s->size >= 2 && s->bp[s->size - 2] == x)
+		return (sx(s));
+	if (s->bp[i] == x)
+		return (rrx(s));
+	while (++i < s->size)
+	{
+		if (s->bp[i] == x)
+			break ;
+	}
+	if (i < s->size / 2)
+	{
+		while (*s->sp != x)
+			rrx(s);
+	}
 	else
-		ft_printf("sb\n");
+	{
+		while (*s->sp != x)
+			rx(s);
+	}
 }
-
-/*void	sa(t_stack *stack)
-{
-	sx(stack);
-	ft_printf("sa\n");
-}
-
-void	sb(t_stack *stack)
-{
-	sx(stack);
-	ft_printf("sb\n");
-}*/

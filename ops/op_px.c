@@ -6,11 +6,12 @@
 /*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 21:54:26 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/03/05 15:08:35 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/03/17 04:53:06 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
 void	px(t_stack *to, t_stack *from)
 {

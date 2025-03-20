@@ -6,13 +6,13 @@
 /*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 20:03:16 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/02/26 00:33:31 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/03/18 04:06:02 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int get_max(t_stack *a)
+int	get_max(t_stack *a)
 {
 	int	i;
 	int	max_index;

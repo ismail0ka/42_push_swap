@@ -1,40 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op_sx.c                                            :+:      :+:    :+:   */
+/*   is_sorted.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/28 21:51:35 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/03/07 11:16:36 by ikarouat         ###   ########.fr       */
+/*   Created: 2025/03/18 05:23:27 by ikarouat          #+#    #+#             */
+/*   Updated: 2025/03/19 22:03:02 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sx(t_stack *stack)
+int	is_sorted(t_stack *s)
 {
-	int	tmp;
+	int	i;
 
-	if (stack->size < 2)
-		return ;
-	tmp = stack->bp[stack->size - 1];
-	stack->bp[stack->size - 1] = stack->bp[stack->size - 2];
-	stack->bp[stack->size - 2] = tmp;
-	if (stack->name == 'a')
-		ft_printf("sa\n");
-	else
-		ft_printf("sb\n");
+	i = 0;
+	while (i < s->size - 1)
+	{
+		if (s->bp[i] < s->bp[i + 1])
+			return (0);
+		i++;
+	}
+	return (1);
 }
-
-/*void	sa(t_stack *stack)
-{
-	sx(stack);
-	ft_printf("sa\n");
-}
-
-void	sb(t_stack *stack)
-{
-	sx(stack);
-	ft_printf("sb\n");
-}*/

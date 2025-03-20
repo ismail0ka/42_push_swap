@@ -6,7 +6,7 @@
 /*   By: ikarouat <ikarouat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 13:37:49 by ikarouat          #+#    #+#             */
-/*   Updated: 2025/03/02 06:09:49 by ikarouat         ###   ########.fr       */
+/*   Updated: 2025/03/07 06:59:21 by ikarouat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,16 @@ void	rrx(t_stack *stack)
 		i++;
 	}
 	stack->bp[stack->size - 1] = to_top;
+	if (stack->size >= 2)
+	{
+		if (stack->name == 'a')
+			ft_printf("rra\n");
+		else
+			ft_printf("rrb\n");
+	}
 }
 
-void	rra(t_stack *a)
+/*void	rra(t_stack *a)
 {
 	rrx(a);
 	if (a->size >= 2)
@@ -41,4 +48,4 @@ void	rrb(t_stack *b)
 	rrx(b);
 	if (b->size >= 2)
 		ft_printf("rrb\n");
-}
+}*/
